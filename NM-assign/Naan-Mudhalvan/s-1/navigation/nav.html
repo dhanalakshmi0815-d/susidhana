@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Navigation</title>
+    <style>
+        *{
+            margin:0;
+        }
+     header ul {
+        display: flex;
+        justify-content: space-around;
+        background-color: cyan;
+        padding:10px;
+      }
+      li{
+        list-style-type: none;
+      }
+      a{
+        text-decoration: none;
+        color: black;
+      }
+      .movies .card{
+        border: 1px solid black;
+        height: 300px;
+        width:200px;
+        border-radius: 10px;
+     
+      
+
+      }.movies .card :hover{
+           transform: scaleX(1.1);
+           transition-duration: 0.2s;
+           cursor: pointer;
+      }
+      .movies{
+        margin-top:40px;
+        display: flex;
+        flex-wrap: wrap;
+    justify-content:space-around ;}
+      .movies img{
+        height:80%;
+        width: 100%;
+        border-top-left-radius: 10px;
+        border-top-right-radius: 10px;
+      }
+      .movies p{
+        text-align: center;
+        
+      }
+    </style>
+  </head>
+  <body>
+    <header>
+      <ul>
+        <li><a href="">Home</a></li>
+        <li><a href="">Movies</a></li>
+        <li><a href="">Series</a></li>
+        <li><a href="">Contact</a></li>
+      </ul>
+    </header>
+    <main>
+    <div class="movies">
+        <div class="card">
+          <img src="images.jpg" >
+          <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Voluptates, consectetur.</p>
+        </div> <div class="card">
+          <img src="images.jpg" >
+          <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Voluptates, consectetur.</p>
+        </div><div class="card">
+          <img src="images.jpg" >
+          <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Voluptates, consectetur.</p>
+        </div>
+  <div class="card">
+          <img src="images.jpg" >
+          <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Voluptates, consectetur.</p></div>
+       
+    </div>
+    </main>
+   
+  </body>
+</html>

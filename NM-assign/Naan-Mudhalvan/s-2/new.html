@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Image Transition</title>
+
+    <style>
+        /* Main Image Container */
+        .container {
+            height: 700px;
+            width: 1500px;
+            background-size: cover;
+            background-position: center;
+            transition: background-image 1s ease-in-out;
+            position: relative;
+            margin: auto;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        /* Navigation Arrows */
+        .arrow {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            background: rgba(0, 0, 0, 0.5);
+            color: white;
+            border: none;
+            padding: 15px 20px;
+            cursor: pointer;
+            font-size: 24px;
+            z-index: 10;
+        }
+
+        .left {
+            left: 10px;
+        }
+
+        .right {
+            right: 10px;
+        }
+
+        /* Thumbnails - Fixed at Right Bottom Corner */
+        .thumbnails {
+            position: fixed;
+            bottom: 10px;
+            right: 10px;
+            background: rgba(0, 0, 0, 0.7);
+            padding: 10px;
+            display: flex;
+            flex-direction: column; /* Stacks images vertically */
+            align-items: center;
+            border-radius: 10px;
+        }
+
+        /* Thumbnail Images */
+        .thumbnails img {
+            width: 100px;
+            height: 70px;
+            margin: 5px 0; /* Adjust spacing for vertical alignment */
+            cursor: pointer;
+            border: 2px solid transparent;
+            transition: transform 0.2s ease-in-out;
+        }
+
+        /* Highlight Active Thumbnail */
+        .thumbnails img.active {
+            border: 2px solid red;
+            transform: scale(1.1);
+        }
+    </style>
+</head>
+<body>
+    <!-- Main Image Display -->
+    <div class="container" id="imageContainer">
+        <button class="arrow left" onclick="prevImage()">&#10094;</button>
+        <button class="arrow right" onclick="nextImage()">&#10095;</button>
+    </div>
+
+    <!-- Thumbnails Positioned at Bottom-Right -->
+    <div class="thumbnails" id="thumbnailContainer"></div>
+
+    <script>
+        const images = ["./4.jpg", "./5.jpeg", "./6.jpeg"]; // Ensure images exist
+        let index = 0;
+        const container = document.getElementById("imageContainer");
+        const thumbnailContainer = document.getElementById("thumbnailContainer");
+
+        function changeImage() {
+            container.style.backgroundImage = `url(${images[index]})`;
+            updateActiveThumbnail();
+        }
+
+        function nextImage() {
+            index = (index + 1) % images.length;
+            changeImage();
+        }
+
+        function prevImage() {
+            index = (index - 1 + images.length) % images.length;
+            changeImage();
+        }
+
+        function selectImage(selectedIndex) {
+            index = selectedIndex;
+            changeImage();
+        }
+
+        function updateActiveThumbnail() {
+            document.querySelectorAll(".thumbnails img").forEach((img, i) => {
+                img.classList.toggle("active", i === index);
+            });
+        }
+
+        function createThumbnails() {
+            images.forEach((imgSrc, i) => {
+                const imgElement = document.createElement("img");
+                imgElement.src = imgSrc;
+                imgElement.onclick = () => selectImage(i);
+                if (i === 0) imgElement.classList.add("active");
+                thumbnailContainer.appendChild(imgElement);
+            });
+        }
+
+        createThumbnails();
+        changeImage();
+        setInterval(nextImage, 3000);
+    </script>
+</body>
+</html>

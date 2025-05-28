@@ -1,0 +1,19 @@
+notes of the day:
+        let a = 10;//local
+        var b = 20;//global
+        const c = 30;//local
+{
+    let a = 10; // local
+    var b = 20; // global
+    const c = 30; // local
+
+    if (a < b) {
+        alert("a is less than b");
+    } else {
+        alert("a is not less than b");
+    }
+}
+
+preincrement / postincrement
+for loop
+function /parameters/without return
